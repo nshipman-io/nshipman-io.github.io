@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terminal</title>
+    <link>https://nshipman-io.github.io/devwhoops/</link>
+    <description>Recent content on Terminal</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://nshipman-io.github.io/devwhoops/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About me</title>
+      <link>https://nshipman-io.github.io/devwhoops/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://nshipman-io.github.io/devwhoops/about/</guid>
+      <description>I&amp;rsquo;m a Devops Engineer in New York City, working at Crystal Dynamics with the Square-Enix West Online Infrastructure Division team.
+I am very passionate about automating the management and reliability of infrastructure. Leveraging tools ranging from Kubernetes,Terraform, Ansible I aim to build a robust cloud platform for my developers.
+When not coding and solving infrastruture related problems, I love partner dancing and biking with my local club.</description>
+    </item>
+    
+  </channel>
+</rss>
