@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Devwhoops.io</title>
+    <link>https://nshipman-io.github.io/blog/</link>
+    <description>Recent content in Blogs on Devwhoops.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Norman Shipman</copyright>
+    <lastBuildDate>Sat, 14 Nov 2020 15:01:43 -0500</lastBuildDate><atom:link href="https://nshipman-io.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Welcome</title>
+      <link>https://nshipman-io.github.io/blog/welcome/</link>
+      <pubDate>Sat, 14 Nov 2020 15:01:43 -0500</pubDate>
+      
+      <guid>https://nshipman-io.github.io/blog/welcome/</guid>
+      <description>Hello World! Welcome to my blog, where I will share my knowledge and experiences building reliable infrastructure, solving coding problems and navigating the tech and gaming industry.
+I hope you are able to benefit from my experience and I hope to help you solve a problem or two in your journey.</description>
+    </item>
+    
+  </channel>
+</rss>
