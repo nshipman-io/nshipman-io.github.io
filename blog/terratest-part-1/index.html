@@ -6,7 +6,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Story Thus Far&amp;hellip; For the past 3 years, after landing my first &amp;ldquo;DevOps Engineer&amp;rdquo; position, just year after college. I have been asking the following question &amp;ldquo;How do I become more developer minded?&amp;rdquo; or &amp;ldquo;What exactly am I supposed to develop?&amp;rdquo; I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few months as an internal Sysadmin." />
+<meta name="description" content="The Story Thus Far&amp;hellip; For the past 3 years, after landing my first &amp;ldquo;DevOps Engineer&amp;rdquo; position, just year after college. I have been asking the following question &amp;ldquo;How do I become more developer minded?&amp;rdquo; or &amp;ldquo;What exactly am I supposed to develop?&amp;rdquo; I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few monOBOBOBOBths as an internal Sysadmin." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://nshipman-io.github.io/blog/terratest-part-1/" />
@@ -173,7 +173,7 @@
         <p><img src="/img/terratest-banner.png" alt="Terratest Banner"></p>
 <h2 id="the-story-thus-far">The Story Thus Far&hellip;<a href="#the-story-thus-far" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>For the past 3 years, after landing my first &ldquo;DevOps Engineer&rdquo; position, just year after college. I have been asking the following question &ldquo;How do I become more developer minded?&rdquo; or &ldquo;What exactly am I supposed to develop?&rdquo;
-I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few months as an internal Sysadmin. Needless to say, with the guidance of my team from Reliant Solutions
+I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few monOBOBOBOBths as an internal Sysadmin. Needless to say, with the guidance of my team from Reliant Solutions
 (Shoutout to the senior engineers that really pushed and guided me..) I had a workable background with Systems Administration tasks, but the Dev in &ldquo;DevOps&rdquo; kept whispering in one ear: &ldquo;Imposter.&rdquo;</p>
 <p>Alright, so what does this story of imposter syndrome have to do with Terratest and automated testing? You see I have been with 3 startups before my time at Square-Enix. With the exception of Enigma Technologies (which we will touch upon later..) Our infrastructure did not have any automated tests or checks. Despite working with some brilliant people, testing wasn&rsquo;t really a thing people automated for the infrastructure (and if I&rsquo;m honest it&rsquo;s not something I thought was possible.) When I joined Engima, and saw how they performed integration tests, I was thrilled at how mant of the terraform issues we were facing at Quovo (and Plaid by acquisition.) were resolved by treating the infrastructure as application code, and running a series of linting and integration tests before merging. The only problem was&hellip; our AWS environment got real messy if devs forgot to run the &ldquo;Delete Pipeline&rdquo; job in gitlab; and trust me.. they forgot. Often.</p>
 <p>Fast forward to Square-Enix, I was missing the saftey net of deploying infrastructure code and have been yearning to start building tools for Kubernetes. What better way to kill two birds with one stone, than writing infrastructure tests?
@@ -202,7 +202,7 @@ Instead, we can automate this process with the following code:</p>
 	<span style="color:#e6db74">&#34;time&#34;</span>
 )
 
-<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestDockerFrontend</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
+<span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestDockerContainer</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
 	<span style="color:#75715e">// Configure the tag to use on the Docker image.
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">tag</span> <span style="color:#f92672">:=</span> <span style="color:#e6db74">&#34;nshipman-io/devwhoops&#34;</span>
 	<span style="color:#a6e22e">buildOptions</span> <span style="color:#f92672">:=</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">docker</span>.<span style="color:#a6e22e">BuildOptions</span>{
@@ -222,10 +222,10 @@ Instead, we can automate this process with the following code:</p>
 
 	<span style="color:#75715e">// Run the docker container and store the container ID
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">container</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">docker</span>.<span style="color:#a6e22e">Run</span>(<span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">tag</span>, <span style="color:#a6e22e">options</span>)
-	
+
 	<span style="color:#75715e">// Defer in GoLang, will run even if the code fails. You will want this for cleanup.
 </span><span style="color:#75715e"></span>	<span style="color:#66d9ef">defer</span> <span style="color:#a6e22e">docker</span>.<span style="color:#a6e22e">Stop</span>(<span style="color:#a6e22e">t</span>, []<span style="color:#66d9ef">string</span>{<span style="color:#a6e22e">container</span>}, <span style="color:#a6e22e">stopOptions</span>)
-	
+
 	<span style="color:#75715e">// Verify our container is in a running state
 </span><span style="color:#75715e"></span>	<span style="color:#a6e22e">output</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">docker</span>.<span style="color:#a6e22e">Inspect</span>(<span style="color:#a6e22e">t</span>, <span style="color:#a6e22e">container</span>)
 	<span style="color:#a6e22e">running</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">output</span>.<span style="color:#a6e22e">Running</span>
@@ -247,40 +247,40 @@ Instead, we can automate this process with the following code:</p>
 go mod init github.com/nshipman-io/devwhoops-io
 </code></pre></div><p>With our workspace configured, let&rsquo;s run our tests and check out output</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">go test -v docker_build_test.go
-<span style="color:#f92672">===</span> RUN   TestDockerFrontend
-TestDockerFrontend 2020-11-16T22:23:52-05:00 logger.go:66: Running <span style="color:#e6db74">&#39;docker build&#39;</span> in ../
-TestDockerFrontend 2020-11-16T22:23:52-05:00 logger.go:66: Running command docker with args <span style="color:#f92672">[</span>build --tag nshipman-io/devwhoops ../<span style="color:#f92672">]</span>
-TestDockerFrontend 2020-11-16T22:23:56-05:00 logger.go:66: Sending build context to Docker daemon  6.746MB
-TestDockerFrontend 2020-11-16T22:23:56-05:00 logger.go:66: Step 1/10 : FROM python:latest
-TestDockerFrontend 2020-11-16T22:23:56-05:00 logger.go:66:  ---&gt; f112835c8a07
-TestDockerFrontend 2020-11-16T22:23:56-05:00 logger.go:66: Step 2/10 : COPY . /devwhoops
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; 9aeac3369865
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Step 3/10 : WORKDIR /devwhoops
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; Running in 08d94ddf96b2
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Removing intermediate container 08d94ddf96b2
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; 9a1f13a21d1b
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Step 4/10 : RUN adduser webapp <span style="color:#f92672">&amp;&amp;</span> chown -R webapp:webapp /devwhoops
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; Running in 09e563f0a17d
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Adding user <span style="color:#e6db74">`</span>webapp<span style="color:#e6db74">&#39; ...
-</span><span style="color:#e6db74">TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Adding new group `webapp&#39;</span> <span style="color:#f92672">(</span>1000<span style="color:#f92672">)</span> ...
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Adding new user <span style="color:#e6db74">`</span>webapp<span style="color:#e6db74">&#39; (1000) with group `webapp&#39;</span> ...
-TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Creating home directory <span style="color:#e6db74">`</span>/home/webapp<span style="color:#e6db74">&#39; ...
-</span><span style="color:#e6db74">TestDockerFrontend 2020-11-16T22:23:57-05:00 logger.go:66: Copying files from `/etc/skel&#39;</span> ...
+<span style="color:#f92672">===</span> RUN   TestDockerContainer
+TestDockerContainer 2020-11-16T22:23:52-05:00 logger.go:66: Running <span style="color:#e6db74">&#39;docker build&#39;</span> in ../
+TestDockerContainer 2020-11-16T22:23:52-05:00 logger.go:66: Running command docker with args <span style="color:#f92672">[</span>build --tag nshipman-io/devwhoops ../<span style="color:#f92672">]</span>
+TestDockerContainer 2020-11-16T22:23:56-05:00 logger.go:66: Sending build context to Docker daemon  6.746MB
+TestDockerContainer 2020-11-16T22:23:56-05:00 logger.go:66: Step 1/10 : FROM python:latest
+TestDockerContainer 2020-11-16T22:23:56-05:00 logger.go:66:  ---&gt; f112835c8a07
+TestDockerContainer 2020-11-16T22:23:56-05:00 logger.go:66: Step 2/10 : COPY . /devwhoops
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; 9aeac3369865
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Step 3/10 : WORKDIR /devwhoops
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; Running in 08d94ddf96b2
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Removing intermediate container 08d94ddf96b2
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; 9a1f13a21d1b
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Step 4/10 : RUN adduser webapp <span style="color:#f92672">&amp;&amp;</span> chown -R webapp:webapp /devwhoops
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66:  ---&gt; Running in 09e563f0a17d
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Adding user <span style="color:#e6db74">`</span>webapp<span style="color:#e6db74">&#39; ...
+</span><span style="color:#e6db74">TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Adding new group `webapp&#39;</span> <span style="color:#f92672">(</span>1000<span style="color:#f92672">)</span> ...
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Adding new user <span style="color:#e6db74">`</span>webapp<span style="color:#e6db74">&#39; (1000) with group `webapp&#39;</span> ...
+TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Creating home directory <span style="color:#e6db74">`</span>/home/webapp<span style="color:#e6db74">&#39; ...
+</span><span style="color:#e6db74">TestDockerContainer 2020-11-16T22:23:57-05:00 logger.go:66: Copying files from `/etc/skel&#39;</span> ...
 ... More Docker Build Stuff...
-estDockerFrontend 2020-11-16T22:55:34-05:00 logger.go:66: Successfully built 256da19fbc39
-TestDockerFrontend 2020-11-16T22:55:34-05:00 logger.go:66: Successfully tagged nshipman-io/devwhoops:latest
-TestDockerFrontend 2020-11-16T22:55:34-05:00 logger.go:66: Running <span style="color:#e6db74">&#39;docker run&#39;</span> on image <span style="color:#e6db74">&#39;nshipman-io/devwhoops&#39;</span>
-TestDockerFrontend 2020-11-16T22:55:34-05:00 logger.go:66: Running command docker with args <span style="color:#f92672">[</span>run --detach -p 8080:8080 nshipman-io/devwhoops<span style="color:#f92672">]</span>
-TestDockerFrontend 2020-11-16T22:55:34-05:00 logger.go:66: 07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec
-TestDockerFrontend 2020-11-16T22:55:34-05:00 retry.go:91: HTTP GET to URL http://localhost:8080/healthcheck
-TestDockerFrontend 2020-11-16T22:55:34-05:00 http_helper.go:32: Making an HTTP GET call to URL http://localhost:8080/healthcheck
-TestDockerFrontend 2020-11-16T22:55:35-05:00 retry.go:103: HTTP GET to URL http://localhost:8080/healthcheck returned an error: Get <span style="color:#e6db74">&#34;http://localhost:8080/healthcheck&#34;</span>: EOF. Sleeping <span style="color:#66d9ef">for</span> 2s and will try again.
-TestDockerFrontend 2020-11-16T22:55:37-05:00 retry.go:91: HTTP GET to URL http://localhost:8080/healthcheck
-TestDockerFrontend 2020-11-16T22:55:37-05:00 http_helper.go:32: Making an HTTP GET call to URL http://localhost:8080/healthcheck
-TestDockerFrontend 2020-11-16T22:55:37-05:00 logger.go:66: Running <span style="color:#e6db74">&#39;docker stop&#39;</span> on containers <span style="color:#e6db74">&#39;[07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec]&#39;</span>
-TestDockerFrontend 2020-11-16T22:55:37-05:00 logger.go:66: Running command docker with args <span style="color:#f92672">[</span>stop --time <span style="color:#ae81ff">10</span> 07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec<span style="color:#f92672">]</span>
-TestDockerFrontend 2020-11-16T22:55:37-05:00 logger.go:66: 07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec
---- PASS: TestDockerFrontend <span style="color:#f92672">(</span>7.98s<span style="color:#f92672">)</span>
+TestDockerFrontend 2020-11-16T22:55:34-05:00 logger.go:66: Successfully built 256da19fbc39
+TestDockerContainer 2020-11-16T22:55:34-05:00 logger.go:66: Successfully tagged nshipman-io/devwhoops:latest
+TestDockerContainer 2020-11-16T22:55:34-05:00 logger.go:66: Running <span style="color:#e6db74">&#39;docker run&#39;</span> on image <span style="color:#e6db74">&#39;nshipman-io/devwhoops&#39;</span>
+TestDockerContainer 2020-11-16T22:55:34-05:00 logger.go:66: Running command docker with args <span style="color:#f92672">[</span>run --detach -p 8080:8080 nshipman-io/devwhoops<span style="color:#f92672">]</span>
+TestDockerContainer 2020-11-16T22:55:34-05:00 logger.go:66: 07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec
+TestDockerContainer 2020-11-16T22:55:34-05:00 retry.go:91: HTTP GET to URL http://localhost:8080/healthcheck
+TestDockerContainer 2020-11-16T22:55:34-05:00 http_helper.go:32: Making an HTTP GET call to URL http://localhost:8080/healthcheck
+TestDockerContainer 2020-11-16T22:55:35-05:00 retry.go:103: HTTP GET to URL http://localhost:8080/healthcheck returned an error: Get <span style="color:#e6db74">&#34;http://localhost:8080/healthcheck&#34;</span>: EOF. Sleeping <span style="color:#66d9ef">for</span> 2s and will try again.
+TestDockerContainer 2020-11-16T22:55:37-05:00 retry.go:91: HTTP GET to URL http://localhost:8080/healthcheck
+TestDockerContainer 2020-11-16T22:55:37-05:00 http_helper.go:32: Making an HTTP GET call to URL http://localhost:8080/healthcheck
+TestDockerContainer 2020-11-16T22:55:37-05:00 logger.go:66: Running <span style="color:#e6db74">&#39;docker stop&#39;</span> on containers <span style="color:#e6db74">&#39;[07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec]&#39;</span>
+TestDockerContainer 2020-11-16T22:55:37-05:00 logger.go:66: Running command docker with args <span style="color:#f92672">[</span>stop --time <span style="color:#ae81ff">10</span> 07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec<span style="color:#f92672">]</span>
+TestDockerContainer 2020-11-16T22:55:37-05:00 logger.go:66: 07b24be22faa8a4e6c6cbf2cfbfc3dfcdf602c47b3c6b8da5363e38a53e610ec
+--- PASS: TestDockerContainer <span style="color:#f92672">(</span>7.98s<span style="color:#f92672">)</span>
 PASS
 ok  	command-line-arguments	8.134s
 </code></pre></div><p>Voila! We can see that our tests have passed and our Dockerfile is ready to be pushed. Granted this is a very basic test and you may need to tweak your tests to fit your organizational needs. I hope to have provided you with some direction in ways to grow your skillset in the DevOps / SRE role.</p>
