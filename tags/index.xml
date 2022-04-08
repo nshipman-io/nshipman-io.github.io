@@ -7,13 +7,40 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Norman Shipman &amp;copy;</copyright>
-    <lastBuildDate>Mon, 16 Nov 2020 21:30:48 -0500</lastBuildDate><atom:link href="https://nshipman-io.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Apr 2022 11:33:20 -0400</lastBuildDate><atom:link href="https://nshipman-io.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS</title>
+      <link>https://nshipman-io.github.io/tags/aws/</link>
+      <pubDate>Sat, 02 Apr 2022 11:33:20 -0400</pubDate>
+      
+      <guid>https://nshipman-io.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Engineering</title>
+      <link>https://nshipman-io.github.io/tags/data-engineering/</link>
+      <pubDate>Sat, 02 Apr 2022 11:33:20 -0400</pubDate>
+      
+      <guid>https://nshipman-io.github.io/tags/data-engineering/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>DevOps</title>
       <link>https://nshipman-io.github.io/tags/devops/</link>
-      <pubDate>Mon, 16 Nov 2020 21:30:48 -0500</pubDate>
+      <pubDate>Sat, 02 Apr 2022 11:33:20 -0400</pubDate>
       
       <guid>https://nshipman-io.github.io/tags/devops/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://nshipman-io.github.io/tags/python/</link>
+      <pubDate>Sat, 02 Apr 2022 11:33:20 -0400</pubDate>
+      
+      <guid>https://nshipman-io.github.io/tags/python/</guid>
       <description></description>
     </item>
     

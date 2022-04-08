@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Event Driven Python Aws :: Devwhoops.io</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="#CloudGuruChallenge - Event Driven Python on AWS After being asked by many friends about transitioning into a DevOps role with no background; I began doing some digging and stumbled upon the Cloud Resume Challenge. The book opens up with a story about a plumber learning to code while dealing with literal shit, then proceeds to give the curious an open-ended challenge to complete.
+Some further digging I stumbled upon A Cloud Guru&amp;rsquo;s Event-Driven Python challenge and decided to jump in as a means to overcome my fear of serverless functions and build some new skills." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://nshipman-io.github.io/blog/event-driven-python-aws/" />
+
+
+
+
+<link rel="stylesheet" href="https://nshipman-io.github.io/assets/style.css">
+
+  <link rel="stylesheet" href="https://nshipman-io.github.io/assets/green.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://nshipman-io.github.io/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://nshipman-io.github.io/img/favicon/green.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="Norman Shipman" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Event Driven Python Aws">
+<meta property="og:description" content="#CloudGuruChallenge - Event Driven Python on AWS After being asked by many friends about transitioning into a DevOps role with no background; I began doing some digging and stumbled upon the Cloud Resume Challenge. The book opens up with a story about a plumber learning to code while dealing with literal shit, then proceeds to give the curious an open-ended challenge to complete.
+Some further digging I stumbled upon A Cloud Guru&amp;rsquo;s Event-Driven Python challenge and decided to jump in as a means to overcome my fear of serverless functions and build some new skills." />
+<meta property="og:url" content="https://nshipman-io.github.io/blog/event-driven-python-aws/" />
+<meta property="og:site_name" content="Devwhoops.io" />
+
+  
+    <meta property="og:image" content="https://nshipman-io.github.io/img/favicon/green.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2022-04-02 11:33:20 -0400 -0400" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="green">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Devwhoops-io$
+  </div>
+</a>
+
+    </div>
+    <div class="menu-trigger">menu</div>
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/">Home</a></li>
+        
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">Show more ▾</li>
+
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/blog/">Blog</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/">Home</a></li>
+      
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/blog/">Blog</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://nshipman-io.github.io/blog/event-driven-python-aws/">Event Driven Python Aws</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2022-04-02 
+      </span>
+    
+    
+    <span class="post-author">:: Norman Shipman</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://nshipman-io.github.io/tags/devops/">DevOps</a>&nbsp;
+    
+    #<a href="https://nshipman-io.github.io/tags/aws/">AWS</a>&nbsp;
+    
+    #<a href="https://nshipman-io.github.io/tags/python/">Python</a>&nbsp;
+    
+    #<a href="https://nshipman-io.github.io/tags/data-engineering/">Data Engineering</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="cloudguruchallenge---event-driven-python-on-aws">#CloudGuruChallenge - Event Driven Python on AWS<a href="#cloudguruchallenge---event-driven-python-on-aws" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>After being asked by many friends about transitioning into a DevOps role with no background;
+I began doing some digging and stumbled upon the <a href="https://cloudresumechallenge.dev/book/">Cloud Resume Challenge</a>.
+The book opens up with a story about a plumber learning to code while dealing with literal shit, then proceeds to
+give the curious an open-ended challenge to complete.</p>
+<p>Some further digging I stumbled upon A Cloud Guru&rsquo;s <a href="https://acloudguru.com/blog/engineering/cloudguruchallenge-python-aws-etl">Event-Driven Python</a> challenge and decided to jump in
+as a means to overcome my fear of serverless functions and build some new skills.</p>
+<h3 id="database">Database<a href="#database" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>For the database, I decided to choose something light weight and affordable. DynamoDB looked to be the best option as I was able to quickly
+launch a table without having to managing credentials. Keeping the stack light and cost-efficient went hand in hand with a serverless stack.
+The main drawback to this decision is presented when setting up the dashboard. Unfortunately, there are some extra steps required to leverage AWS Quicksight
+which was a bit surprising for a native AWS tool.</p>
+<h3 id="data-handling-in-python">Data Handling in Python<a href="#data-handling-in-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The data manipulation portion of this was new to me, even with a decent background in Python. For manipulating data, I used the <code>pandas</code> library and leveraged dataframes to
+manipulate fields and verify the data was as expected. The <code>awswrangler</code> package was used to load and update any records in the database that have been added. I do believe the
+function as a sync and will update any tables if the data is not the same, however I have not tested this for the sake of getting this project done. From a data engineering perspective it would
+be wise to verify the nature of the <code>awswrangler</code> put command. Once records are updated, I compare the fields in the dataframe with the number of rows in Dynamo to get the number of rows updated.</p>
+<h3 id="infrastructure-as-code-iac">Infrastructure As Code (IAC)<a href="#infrastructure-as-code-iac" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The IAC portion of this project was quite interesting, as I had to leverage Terraform extensively to package the lambda application and
+deliver it to AWS. Since the repository was public (and also since it&rsquo;s good practice) I had to take into consideration publishing variable
+files to Git, as that would expose some ARN IDs, emails and AWS credentials. This issue becomes more apparent when hooking up the CI component
+of this project.</p>
+<p>A notable problem was dealing with delivering third party packages to lambda.</p>
+<h3 id="notifications">Notifications<a href="#notifications" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Notifications were easy to hookup, leveraging AWS&rsquo;s SNS subscription. For flexibility and security, I configured the SNS topic via environment variable to the
+application. Anytime the job would succeed and update records, a message would be emailed letting the user know how many records were added to the table.</p>
+<p><img src="/img/records-updated-notification.png" alt="records-updated-notification"></p>
+<p>Whenever the job fails, the recipient will receive a notification with the python error message, which has proven very helpful
+when you need to debug any permission or code issues.</p>
+<p><img src="/img/failed-job-notifications.png" alt="failed-job-notification"></p>
+<h3 id="cicd">CI/CD<a href="#cicd" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>For CI/CD, I leveraged Github actions to deploy the Terraform changes. The workflow involves, opening up a Pull Request to run a <code>terraform plan</code>
+job. This way we can ensure our changes won&rsquo;t fail on the plan before merging. We can check out any updates in the comment section of the pull request.
+Upon merging to master, the job will run a <code>terraform apply</code> and updated our changes to AWS.</p>
+<p>Follow this <a href="https://learn.hashicorp.com/tutorials/terraform/github-actions">Terraform</a> tutorial to learn how to leverage github actions to automate terraform deployments.</p>
+<h3 id="wrap-up">Wrap Up<a href="#wrap-up" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>This was a great project to explore the challenges a data engineer may face when setting up ETL pipelines. The most challenging parts of this challenge were deploying the lambdas to AWS
+and setting up a secure CI/CD pipeline. I can happily say, this entire project has a monthly cost of ~$10 even with active testing. You can find the source code for the project on <a href="%22https://github.com/nshipman-io/acg-python-aws-etl%22">GitHub</a>.</p>
+<p><img src="/img/aws-etl-billing.png" alt="aws-billing-console"></p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="https://nshipman-io.github.io/blog/terratest-part-1/">
+                <span class="button__text">Terratest: Diving Into Infrastructure Testing</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>Norman Shipman &copy;</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://nshipman-io.github.io/assets/main.js"></script>
+<script src="https://nshipman-io.github.io/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

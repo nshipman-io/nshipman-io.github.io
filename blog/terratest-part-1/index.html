@@ -6,7 +6,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Story Thus Far&amp;hellip; For the past 3 years, after landing my first &amp;ldquo;DevOps Engineer&amp;rdquo; position, just year after college. I have been asking the following question &amp;ldquo;How do I become more developer minded?&amp;rdquo; or &amp;ldquo;What exactly am I supposed to develop?&amp;rdquo; I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few monOBOBOBOBths as an internal Sysadmin." />
+<meta name="description" content="The Story Thus Far&amp;hellip; For the past 3 years, after landing my first &amp;ldquo;DevOps Engineer&amp;rdquo; position, just year after college. I have been asking the following question &amp;ldquo;How do I become more developer minded?&amp;rdquo; or &amp;ldquo;What exactly am I supposed to develop?&amp;rdquo; I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few months as an internal Sysadmin." />
 <meta name="keywords" content="" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://nshipman-io.github.io/blog/terratest-part-1/" />
@@ -173,7 +173,7 @@
         <p><img src="/img/terratest-banner.png" alt="Terratest Banner"></p>
 <h2 id="the-story-thus-far">The Story Thus Far&hellip;<a href="#the-story-thus-far" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>For the past 3 years, after landing my first &ldquo;DevOps Engineer&rdquo; position, just year after college. I have been asking the following question &ldquo;How do I become more developer minded?&rdquo; or &ldquo;What exactly am I supposed to develop?&rdquo;
-I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few monOBOBOBOBths as an internal Sysadmin. Needless to say, with the guidance of my team from Reliant Solutions
+I was fortunate or rather unlucky depending on how you see it, to have landed a devops role after doing a few months of Linux Support and another few months as an internal Sysadmin. Needless to say, with the guidance of my team from Reliant Solutions
 (Shoutout to the senior engineers that really pushed and guided me..) I had a workable background with Systems Administration tasks, but the Dev in &ldquo;DevOps&rdquo; kept whispering in one ear: &ldquo;Imposter.&rdquo;</p>
 <p>Alright, so what does this story of imposter syndrome have to do with Terratest and automated testing? You see I have been with 3 startups before my time at Square-Enix. With the exception of Enigma Technologies (which we will touch upon later..) Our infrastructure did not have any automated tests or checks. Despite working with some brilliant people, testing wasn&rsquo;t really a thing people automated for the infrastructure (and if I&rsquo;m honest it&rsquo;s not something I thought was possible.) When I joined Engima, and saw how they performed integration tests, I was thrilled at how mant of the terraform issues we were facing at Quovo (and Plaid by acquisition.) were resolved by treating the infrastructure as application code, and running a series of linting and integration tests before merging. The only problem was&hellip; our AWS environment got real messy if devs forgot to run the &ldquo;Delete Pipeline&rdquo; job in gitlab; and trust me.. they forgot. Often.</p>
 <p>Fast forward to Square-Enix, I was missing the saftey net of deploying infrastructure code and have been yearning to start building tools for Kubernetes. What better way to kill two birds with one stone, than writing infrastructure tests?
@@ -297,6 +297,13 @@ ok  	command-line-arguments	8.134s
         <hr />
     </div>
     <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://nshipman-io.github.io/blog/event-driven-python-aws/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Event Driven Python Aws</span>
+            </a>
+        </span>
         
         
         <span class="button next">
