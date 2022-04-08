@@ -196,14 +196,15 @@ be wise to verify the nature of the <code>awswrangler</code> put command. Once r
 deliver it to AWS. Since the repository was public (and also since it&rsquo;s good practice) I had to take into consideration publishing variable
 files to Git, as that would expose some ARN IDs, emails and AWS credentials. This issue becomes more apparent when hooking up the CI component
 of this project.</p>
-<p>A notable problem was dealing with delivering third party packages to lambda.</p>
+<p>A notable problem was dealing with delivering third party packages to lambda. Thankfully <code>awswrangler</code> has a lambda layer that we can pull in
+without any additional packages to build.</p>
 <h3 id="notifications">Notifications<a href="#notifications" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Notifications were easy to hookup, leveraging AWS&rsquo;s SNS subscription. For flexibility and security, I configured the SNS topic via environment variable to the
 application. Anytime the job would succeed and update records, a message would be emailed letting the user know how many records were added to the table.</p>
 <p><img src="/img/records-updated-notification.png" alt="records-updated-notification"></p>
 <p>Whenever the job fails, the recipient will receive a notification with the python error message, which has proven very helpful
 when you need to debug any permission or code issues.</p>
-<p><img src="/img/failed-job-notifications.png" alt="failed-job-notification"></p>
+<p><img src="/img/failed-job-notification.png" alt="failed-job-notification"></p>
 <h3 id="cicd">CI/CD<a href="#cicd" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>For CI/CD, I leveraged Github actions to deploy the Terraform changes. The workflow involves, opening up a Pull Request to run a <code>terraform plan</code>
 job. This way we can ensure our changes won&rsquo;t fail on the plan before merging. We can check out any updates in the comment section of the pull request.
